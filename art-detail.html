@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title id="doc-title">Artwork</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header id="site-header" class="site-header"></header>
+
+<main id="main"></main>
+
+<footer id="site-footer" class="site-footer"></footer>
+
+<script src="js/data.js"></script>
+<script src="js/main.js"></script>
+<script>
+  renderChrome("art.html");
+  const item = ARTWORKS.find((a) => a.slug === getParam("slug"));
+  const main = qs("#main");
+
+  if (requireItem(item, main)) {
+    document.title = item.title + " — Art";
+
+    main.innerHTML = `
+      <div class="wrap" style="padding-top: clamp(2.5rem, 6vw, 4rem);">
+        <a class="back" href="art.html">← All art</a>
+      </div>
+      <div class="wrap art-piece-meta" style="margin-top: 2rem;">
+        <h1>${escapeHtml(item.title)}</h1>
+        <p class="meta-line">${escapeHtml([item.year, item.medium, item.dimensions].filter(Boolean).join(" — "))}</p>
+        ${item.series ? `<p class="meta-line">Series: ${escapeHtml(item.series)}</p>` : ""}
+      </div>
+      <div class="wrap art-piece-plate">
+        <div id="main-plate" style="cursor:pointer;">${plateHTML({ src: item.image, ratio: "landscape", label: item.title })}</div>
+      </div>
+      ${item.detailImages && item.detailImages.length ? `
+      <div class="wrap thumb-grid" id="detail-grid" style="margin-top: 1.5rem; grid-template-columns: repeat(${Math.min(item.detailImages.length, 3)}, 1fr); max-width:900px; margin-left:auto; margin-right:auto;"></div>` : ""}
+      ${item.description || (item.exhibitionHistory && item.exhibitionHistory.length) ? `<div class="wrap art-piece-text">
+        ${item.description ? `<p class="prose">${escapeHtml(item.description)}</p>` : ""}
+        ${item.exhibitionHistory && item.exhibitionHistory.length ? `
+          <p class="label" style="margin-top:2rem; margin-bottom:0.75rem;">Exhibition history</p>
+          ${item.exhibitionHistory.map((h) => `<p class="prose" style="font-size:0.95rem;">${escapeHtml(h)}</p>`).join("")}
+        ` : ""}
+      </div>` : ""}
+    `;
+
+    const galleryItems = [
+      { src: item.image, title: item.title, meta: item.medium + ", " + item.year },
+      ...(item.detailImages || []).map((src) => ({ src, title: item.title + " — detail", meta: item.medium + ", " + item.year })),
+    ];
+
+    qs("#main-plate").addEventListener("click", () => Lightbox.open(galleryItems, 0));
+
+    if (item.detailImages && item.detailImages.length) {
+      const grid = qs("#detail-grid");
+      grid.innerHTML = item.detailImages.map((src, i) => `
+        <div class="thumb" data-index="${i}" tabindex="0" role="button" aria-label="View detail image ${i + 1}">
+          <img src="${escapeHtml(src)}" alt="${escapeHtml(item.title)} — detail" loading="lazy"
+               onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          <div class="placeholder-note" style="display:none;">Detail — ${escapeHtml(item.title)}</div>
+        </div>
+      `).join("");
+      qsa(".thumb", grid).forEach((el) => {
+        const openThis = () => Lightbox.open(galleryItems, Number(el.dataset.index) + 1);
+        el.addEventListener("click", openThis);
+        el.addEventListener("keydown", (e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); openThis(); } });
+      });
+    }
+  }
+</script>
+
+</body>
+</html>

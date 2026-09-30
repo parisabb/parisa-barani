@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title id="doc-title">Project — Parisa Barani</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header id="site-header" class="site-header"></header>
+
+<main id="main"></main>
+
+<footer id="site-footer" class="site-footer"></footer>
+
+<script src="js/data.js"></script>
+<script src="js/main.js"></script>
+<script>
+  renderChrome("work.html");
+  const item = PROFESSIONAL_PROJECTS.find((p) => p.slug === getParam("slug"));
+  const main = qs("#main");
+
+  if (requireItem(item, main)) {
+    document.title = item.title + " — Parisa Barani";
+
+    main.innerHTML = `
+      <div class="wrap detail-head">
+        <a class="back" href="work.html">← All work</a>
+        <p class="identity-flag">Professional work — completed with ${escapeHtml(item.studio)}</p>
+        <h1 class="display-lg" style="margin-top:1rem;">${escapeHtml(item.title)}</h1>
+        ${metaRowHTML([
+          ["Studio / Company", item.studio],
+          ["Artist", item.artist],
+          ["Role", item.role],
+          ["Location", item.location],
+          ["Year", item.year],
+          ["Type", item.category],
+        ])}
+      </div>
+
+      <section style="border-top:none; padding-top:0;">
+        <div class="wrap">
+          <div id="hero-plate" style="cursor:pointer;">${plateHTML({ src: item.heroImage, ratio: "hero", label: item.title + " — hero image" })}</div>
+        </div>
+      </section>
+
+      ${item.concept ? `
+      <section>
+        <div class="wrap" style="max-width: 800px;">
+          <p class="label" style="margin-bottom:1rem;">Concept</p>
+          <p class="prose">${escapeHtml(item.concept)}</p>
+        </div>
+      </section>` : ""}
+
+      ${item.scope || (item.materials && item.materials.length) ? `
+      <section>
+        <div class="wrap">
+          ${item.scope ? `<p class="label" style="margin-bottom:1rem;">My contribution</p>
+          <p class="prose" style="max-width: 800px;">${escapeHtml(item.scope)}</p>` : ""}
+          ${item.projectUrl ? `
+            <a class="project-link" href="${escapeHtml(item.projectUrl)}" target="_blank" rel="noopener noreferrer">${escapeHtml(item.projectLinkLabel || "Official project reference")} ↗</a>` : ""}
+          ${item.materials && item.materials.length ? `
+            <div style="margin-top:2rem; display:flex; gap:2rem; flex-wrap:wrap;">
+              ${item.materials.map((m) => `<span class="meta" style="font-size:0.85rem; color:var(--stone); border-bottom:1px solid var(--hairline-strong); padding-bottom:2px;">${escapeHtml(m)}</span>`).join("")}
+            </div>` : ""}
+        </div>
+      </section>` : ""}
+
+      ${item.drawings && item.drawings.length ? `
+      <section>
+        <div class="wrap">
+          <p class="label" style="margin-bottom:1.5rem;">Drawings &amp; plans</p>
+          <div class="thumb-grid" id="drawings-grid"></div>
+        </div>
+      </section>` : ""}
+
+      ${item.images && item.images.length ? `
+      <section>
+        <div class="wrap">
+          <p class="label" style="margin-bottom:1.5rem;">Gallery</p>
+          <div class="thumb-grid" id="gallery-grid"></div>
+        </div>
+      </section>` : ""}
+    `;
+
+    qs("#hero-plate").addEventListener("click", () => {
+      Lightbox.open([{ src: item.heroImage, title: item.title, meta: item.location + " — " + item.year }], 0);
+    });
+
+    if (item.drawings && item.drawings.length) {
+      buildLightboxGrid(qs("#drawings-grid"), item.drawings, () => "Drawing / plan — " + item.title);
+    }
+
+    if (item.images && item.images.length) {
+      buildLightboxGrid(qs("#gallery-grid"), item.images, (i) => item.title + " — view " + (i + 1));
+    }
+  }
+</script>
+
+</body>
+</html>

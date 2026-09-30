@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact — Parisa Barani</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header id="site-header" class="site-header"></header>
+
+<main>
+  <section style="border-top:none;">
+    <div class="wrap">
+      <p class="label">Contact</p>
+      <h1 class="display-lg" style="margin-top:0.6rem;">Contact.</h1>
+      <p class="prose" style="margin-top:1.5rem; max-width:60ch;">Available for collaborations, commissions and exhibition enquiries. I work on interior architecture, renovation and set-design projects across different stages, from early concept through design development and production.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="contact-item">
+        <p class="label">Email</p>
+        <p class="contact-line"><a href="mailto:Parisabarani.b@gmail.com" id="contact-email">Parisabarani.b@gmail.com</a></p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer id="site-footer" class="site-footer"></footer>
+
+<script src="js/data.js"></script>
+<script src="js/main.js"></script>
+<script>
+  renderChrome("contact.html");
+  qs("#contact-email").textContent = SITE.email;
+  qs("#contact-email").href = "mailto:" + SITE.email;
+</script>
+
+</body>
+</html>

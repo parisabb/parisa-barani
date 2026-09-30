@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Parisa Barani — Interior design, spatial practice and art</title>
+<meta name="description" content="Parisa Barani is an interior and spatial designer working professionally between studios and independently as Studio Baran, across interiors, exhibitions and art.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body class="home-page">
+
+<header id="site-header" class="site-header"></header>
+
+<main>
+
+  <section class="hero" style="border-top:none;">
+    <div class="hero-plate" id="hero-plate"></div>
+    <div class="wrap hero-content">
+      <div class="hero-copy">
+        <p class="label kicker">Interior Architect / Spatial Designer — Stockholm</p>
+        <div class="hero-heading">
+          <h1 class="display-xl">Parisa Barani</h1>
+          <p class="tagline">Spatial Design as an Artistic Practice.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding-top: clamp(2.5rem, 6vw, 4rem);">
+    <div class="wrap">
+      <p class="label" style="margin-bottom: 1.25rem;">The practice, in four parts</p>
+      <div class="practice-map">
+        <a href="work.html"><span class="num">Professional</span><h3>Work</h3><p>Interior and spatial projects completed with other studios and companies.</p></a>
+        <a href="studio-baran.html"><span class="num">Independent</span><h3>Studio Baran</h3><p>Spatial design, objects and material research, developed on my own terms.</p></a>
+        <a href="exhibitions.html"><span class="num">Public</span><h3>Exhibitions</h3><p>Spatial work and art on display.</p></a>
+        <a href="art.html"><span class="num">Personal</span><h3>Art</h3><p>Paintings and sculpture.</p></a>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="section-head">
+        <h2 class="display-lg">Selected professional work</h2>
+        <a class="view-all" href="work.html">View all work</a>
+      </div>
+      <div class="thumb-grid" id="home-work"></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="section-head">
+        <h2 class="display-lg">Studio Baran</h2>
+        <a class="view-all" href="studio-baran.html">View the studio</a>
+      </div>
+      <p class="prose" style="margin-bottom: 2.5rem;">Studio Baran is my independent practice — spatial design, objects and material research pursued without a client brief. It is where questions raised in professional work get followed further.</p>
+      <div class="thumb-grid" id="home-baran"></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="section-head">
+        <h2 class="display-lg">Art</h2>
+        <a class="view-all" href="art.html">View the archive</a>
+      </div>
+      <div class="thumb-grid" id="home-art"></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap" style="max-width: 900px;">
+      <p class="label" style="margin-bottom: 1.25rem;">About</p>
+      <p class="prose">Parisa Barani is an interior architect and spatial designer working across architecture, art and exhibition design. With a Bachelor’s degree in Architecture and a Master’s degree in Spatial Design from Konstfack University, she creates spaces that bring ideas to life and shape how people experience a story.</p>
+      <p class="prose" style="margin-top:1rem;">Her practice combines concept development, research, design and production. She is drawn to projects that ask more of a space: to spark curiosity, evoke feeling and open new perspectives. Whether designing an interior or developing an exhibition, she brings a strong visual approach, close attention to detail and a collaborative mindset.</p>
+      <p class="prose" style="margin-top:1rem;">Parisa believes the most powerful spaces do more than look beautiful. They invite people in, start conversations and stay with us long after we leave. Her ambition is to create work that connects people across cultures and expands the possibilities of spatial design.</p>
+      <a class="view-all" href="about.html" style="display:inline-block; margin-top:1.5rem;">Read more</a>
+    </div>
+  </section>
+
+</main>
+
+<footer id="site-footer" class="site-footer"></footer>
+
+<script src="js/data.js"></script>
+<script src="js/main.js"></script>
+<script>
+  renderChrome("index.html");
+
+  qs("#hero-plate").innerHTML = plateHTML({
+    src: "images/hero-public-bench-city.png",
+    ratio: "hero",
+    label: "Public Bench in a city square",
+  });
+
+  /* Keep the tagline's wrap width locked to the rendered width of
+     "Parisa Barani" so the two lines read as one aligned block. */
+  (function syncHeroTaglineWidth() {
+    const heading = qs(".hero-heading");
+    const name = qs(".hero h1");
+    if (!heading || !name) return;
+    const apply = () => {
+      heading.style.setProperty("--hero-name-width", name.offsetWidth + "px");
+    };
+    apply();
+    window.addEventListener("resize", apply);
+    if (document.fonts && document.fonts.ready) {
+      document.fonts.ready.then(apply);
+    }
+  })();
+
+  function gridCell(container, item, href, status = "") {
+    container.insertAdjacentHTML("beforeend", thumbCardHTML({
+      href: href + "?slug=" + encodeURIComponent(item.slug),
+      src: item.heroImage || item.image,
+      title: item.title,
+      meta: item.year,
+      status,
+    }));
+  }
+
+  const homeWork = qs("#home-work");
+  newestFirst(PROFESSIONAL_PROJECTS).slice(0, 4).forEach((p) => gridCell(homeWork, p, "work-detail.html"));
+
+  const homeBaran = qs("#home-baran");
+  newestFirst(STUDIO_BARAN_PROJECTS).slice(0, 4).forEach((p) => gridCell(homeBaran, p, "studio-baran-detail.html"));
+
+  const homeArt = qs("#home-art");
+  ARTWORKS.slice(0, 4).forEach((p) => gridCell(homeArt, p, "art-detail.html", p.availability || "sold"));
+</script>
+
+</body>
+</html>

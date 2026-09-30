@@ -1,0 +1,18 @@
+# Local portfolio exports and temporary publishing copies
+output/
+publish/
+tmp/
+.codex-finalizer/
+
+# Operating-system files
+.DS_Store
+Thumbs.db
+
+# Local duplicates and shortcuts not used by the website
+/data.js
+*.lnk
+
+# Editable source files kept locally, not deployed
+*.pdf
+*.3dm
+*.tif

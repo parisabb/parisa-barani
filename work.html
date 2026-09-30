@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Work — Parisa Barani</title>
+<meta name="description" content="Interior and spatial design projects completed while working with other studios and companies.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header id="site-header" class="site-header"></header>
+
+<main>
+  <section style="border-top:none;">
+    <div class="wrap">
+      <p class="label">Professional work</p>
+      <h1 class="display-lg" style="margin-top: 0.6rem;">Interior and spatial projects.</h1>
+      <p class="prose" style="margin-top: 1.5rem;">Selected work developed in collaboration with studios and companies. Each project identifies the studio, role and individual contribution.</p>
+    </div>
+  </section>
+
+  <section style="padding-top: 0;">
+    <div class="wrap" id="work-list"></div>
+  </section>
+</main>
+
+<footer id="site-footer" class="site-footer"></footer>
+
+<script src="js/data.js"></script>
+<script src="js/main.js"></script>
+<script>
+  renderChrome("work.html");
+  buildIndexList(qs("#work-list"), newestFirst(PROFESSIONAL_PROJECTS), {
+    baseHref: "work-detail.html",
+    metaFn: (p) => [p.studio, p.location, p.year],
+  });
+</script>
+
+</body>
+</html>

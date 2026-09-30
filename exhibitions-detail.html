@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title id="doc-title">Exhibition</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header id="site-header" class="site-header"></header>
+
+<main id="main"></main>
+
+<footer id="site-footer" class="site-footer"></footer>
+
+<script src="js/data.js"></script>
+<script src="js/main.js"></script>
+<script>
+  renderChrome("exhibitions.html");
+  const item = EXHIBITIONS.find((e) => e.slug === getParam("slug"));
+  const main = qs("#main");
+
+  if (requireItem(item, main)) {
+    document.title = item.title + " — Exhibitions";
+    const relatedArt = (item.artworks || []).map((slug) => ARTWORKS.find((a) => a.slug === slug)).filter(Boolean);
+
+    main.innerHTML = `
+      <div class="wrap detail-head">
+        <a class="back" href="exhibitions.html">← All exhibitions</a>
+        <h1 class="display-lg" style="margin-top:1rem;">${escapeHtml(item.title)}</h1>
+        ${metaRowHTML([
+          ["Institution", item.institution],
+          ["Location", item.location],
+          ["Role", item.role],
+          ["Year", item.year],
+        ])}
+      </div>
+
+      ${item.images.length ? `
+      <section style="border-top:none; padding-top:0;">
+        <div class="wrap">
+          <div id="hero-plate" style="cursor:pointer;">${plateHTML({ src: item.images[0], ratio: "hero", label: item.title + " — installation view" })}</div>
+        </div>
+      </section>` : ""}
+
+      <section>
+        <div class="wrap" style="max-width: 800px;">
+          <p class="label" style="margin-bottom:1rem;">About the exhibition</p>
+          <p class="prose">${escapeHtml(item.description)}</p>
+        </div>
+      </section>
+
+      ${item.images.length > 1 ? `
+      <section>
+        <div class="wrap">
+          <p class="label" style="margin-bottom:1.5rem;">Installation views</p>
+          <div class="thumb-grid" id="views-grid"></div>
+        </div>
+      </section>` : ""}
+
+      ${relatedArt.length ? `
+      <section>
+        <div class="wrap">
+          <p class="label" style="margin-bottom:1.5rem;">Works shown</p>
+          <div class="thumb-grid">
+            ${relatedArt.map((a) => thumbCardHTML({
+              href: "art-detail.html?slug=" + encodeURIComponent(a.slug),
+              src: a.image,
+              title: a.title,
+              meta: a.year,
+            })).join("")}
+          </div>
+        </div>
+      </section>` : ""}
+    `;
+
+    if (item.images.length) {
+      qs("#hero-plate").addEventListener("click", () => {
+        Lightbox.open(item.images.map((src, i) => ({ src, title: item.title, meta: i === 0 ? "Installation view" : "Installation view " + (i + 1) })), 0);
+      });
+    }
+
+    if (item.images.length > 1) {
+      buildLightboxGrid(qs("#views-grid"), item.images.slice(1), (i) => item.title + " — installation view " + (i + 2));
+    }
+  }
+</script>
+
+</body>
+</html>
