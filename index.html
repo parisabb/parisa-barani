@@ -132,10 +132,7 @@
   newestFirst(STUDIO_BARAN_PROJECTS).slice(0, 4).forEach((p) => gridCell(homeBaran, p, "studio-baran-detail.html"));
 
   const homeArt = qs("#home-art");
-  [...ARTWORKS]
-    .sort((a, b) => Number(b.year || 0) - Number(a.year || 0))
-    .slice(0, 4)
-    .forEach((p) => gridCell(homeArt, p, "art-detail.html", p.availability || "sold"));
+  ARTWORKS.slice(0, 4).forEach((p) => gridCell(homeArt, p, "art-detail.html", p.availability || "sold"));
 </script>
 
 </body>
