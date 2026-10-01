@@ -93,12 +93,12 @@ function renderChrome(activeHref) {
    instead so the layout still reads correctly.
    ———————————————————————————————————————————— */
 
-function plateHTML({ src, ratio = "landscape", label = "", hoverable = false }) {
+function plateHTML({ src, ratio = "landscape", label = "", hoverable = false, priority = false }) {
   const cls = `plate ratio-${ratio}${hoverable ? " hoverable" : ""}`;
   const note = escapeHtml(label || "Image placeholder");
   return `
     <div class="${cls}">
-      ${src ? `<img src="${escapeHtml(src)}" alt="${note}" loading="lazy"
+      ${src ? `<img src="${escapeHtml(src)}" alt="${note}" loading="${priority ? "eager" : "lazy"}"${priority ? " fetchpriority=\"high\"" : ""}
            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">` : ""}
       ${visualFallback(label || "Image placeholder", src)}
     </div>`;
