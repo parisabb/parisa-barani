@@ -800,6 +800,12 @@ section + section { border-top: 1px solid var(--hairline); }
 }
 .project-link:hover { color: var(--pink-bright); border-bottom-color: var(--pink-bright); }
 
+.image-credit {
+  margin: 0.65rem 0 0;
+  color: var(--stone);
+  font-size: 0.72rem;
+}
+
 .identity-flag {
   display: inline-block;
   margin-top: 1.25rem;

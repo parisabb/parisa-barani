@@ -16,3 +16,8 @@ Thumbs.db
 *.pdf
 *.3dm
 *.tif
+
+# High-resolution originals are kept locally; the website uses WebP copies.
+*.jpg
+*.jpeg
+*.png

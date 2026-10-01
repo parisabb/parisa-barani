@@ -39,11 +39,13 @@
           ["Location", item.location],
           ["Year", item.year],
         ])}
+        ${item.projectUrl ? `<a class="project-link" href="${escapeHtml(item.projectUrl)}" target="_blank" rel="noopener noreferrer">${escapeHtml(item.projectLinkLabel || "Project reference")} ↗</a>` : ""}
       </div>
 
       <section style="border-top:none; padding-top:0;">
         <div class="wrap">
           <div id="hero-plate" style="cursor:pointer;">${plateHTML({ src: item.heroImage, ratio: "hero", label: item.title + " — hero image" })}</div>
+          ${item.heroCredit ? `<p class="image-credit">${escapeHtml(item.heroCredit)}</p>` : ""}
         </div>
       </section>
 
