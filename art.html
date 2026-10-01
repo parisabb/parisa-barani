@@ -19,7 +19,7 @@
     <div class="wrap">
       <p class="label">Art</p>
       <h1 class="display-lg" style="margin-top: 0.6rem;">Painting and sculpture.</h1>
-      <p class="prose" style="margin-top: 1.5rem; max-width: 65ch;">Blurring the boundaries between reality and imagination, each work invites reflection, curiosity and personal connection. The practice considers freedom in its many forms, honouring the beauty of dreams and the resilience of those who make their own way.</p>
+      <p class="prose" style="margin-top: 1.5rem; max-width: 65ch;">Blurring the boundaries between reality and imagination, each work invites reflection, curiosity and personal connection. Works are ordered by year of production, newest first.</p>
     </div>
   </section>
 
@@ -36,7 +36,8 @@
 <script src="js/main.js"></script>
 <script>
   renderChrome("art.html");
-  qs("#art-grid").innerHTML = ARTWORKS.map((a) => thumbCardHTML({
+  const artworksByNewest = [...ARTWORKS].sort((a, b) => Number(b.year || 0) - Number(a.year || 0));
+  qs("#art-grid").innerHTML = artworksByNewest.map((a) => thumbCardHTML({
     href: "art-detail.html?slug=" + encodeURIComponent(a.slug),
     src: a.image,
     title: a.title,
