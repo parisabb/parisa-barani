@@ -221,7 +221,7 @@ const STUDIO_BARAN_PROJECTS = [
     year: "2022",
     location: "Hägerstensåsens Medborgarhus, Stockholm, Sweden",
     category: "Public Installation",
-    concept: "THE WAY — NOT ALL WHO WANDER ARE LOST is a temporary installation for the courtyard of Hägerstensåsens Medborgarhus. Its colourful passages form an open-ended route around two existing trees, inviting visitors of all ages to wander, invent stories and choose their own way. The work considers play as a space for imagination, courage and freedom.",
+    concept: "THE WAY — NOT ALL WHO WANDER ARE LOST is a temporary installation proposal for the courtyard of Hägerstensåsens Medborgarhus. Its colourful passages form an open-ended route around two existing trees, inviting visitors of all ages to wander, invent stories and choose their own way. The work considers play as a space for imagination, courage and freedom.",
     process: "The project began with research into the history of Folkets Hus and Medborgarhus: community buildings created by workers who were denied places to gather, organise and express their views. Developed during the 2022 Woman, Life, Freedom protests in Iran, THE WAY carries a personal reflection on social freedom and young people’s right to be heard. Research into Fröbel’s educational gifts and radical playground approaches shaped the installation’s non-prescriptive forms. Stage-set painting and temporary land art informed the visual language of this proposal for a temporary public installation. Beneath the tree canopy, shifting light, colour and movement turn the courtyard into a place for independent play and shared imagination.",
     heroImage: "images/studio-baran/The Way/01 and hero.webp",
     images: [
