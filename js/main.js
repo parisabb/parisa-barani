@@ -57,7 +57,7 @@ function renderChrome(activeHref) {
   if (header) {
     header.innerHTML = `
       <div class="wrap">
-        <a class="mark" href="index.html">${SITE.studio}</a>
+        <a class="mark" href="./">${SITE.name}</a>
         <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="site-nav">Menu</button>
         <nav class="site-nav" id="site-nav">
           ${NAV_LINKS.map((l) => `<a href="${l.href}" ${l.href === activeHref ? 'aria-current="page"' : ""}>${l.label}</a>`).join("")}
