@@ -69,6 +69,7 @@ const PROFESSIONAL_PROJECTS = [
     category: "Store Design",
     scope: "Led concept development and spatial design from early direction through delivery, including the interior architecture drawing package, moodboards, 3D design and visualisation, furniture design, and FF&E selection.",
     concept: "Deep Sense is a commercial brand creating natural cosmetics and skincare products. Ravagh Atelier designed its flagship store in Tehran around elements of nature: plants, flowers, birds and animals. Wallpapers and art installations create a wondrous refuge from the bustle of Vali-Asr Avenue, while innovative use of background colour, light and volume helps shoppers feel relaxed while trying and choosing products.",
+    imageCredit: "Images: © Deed Studio",
     heroImage: "images/work/Deep sence/med2-2.webp",
     images: [
       "images/work/Deep sence/med2-2.webp",

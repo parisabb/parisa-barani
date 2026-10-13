@@ -29,7 +29,7 @@
           ["Location", item.location], ["Year", item.year], ["Type", item.category],
         ])}
       </div>
-      <section style="border-top:none; padding-top:0;"><div class="wrap"><div id="hero-plate" style="cursor:pointer;">${plateHTML({ src: item.heroImage, ratio: "hero", label: item.title + " — hero image" })}</div></div></section>
+      <section style="border-top:none; padding-top:0;"><div class="wrap"><div id="hero-plate" style="cursor:pointer;">${plateHTML({ src: item.heroImage, ratio: "hero", label: item.title + " — hero image" })}</div>${item.imageCredit ? `<p class="image-credit">${escapeHtml(item.imageCredit)}</p>` : ""}</div></section>
       ${item.concept ? `<section><div class="wrap" style="max-width:800px;"><p class="label" style="margin-bottom:1rem;">Concept</p><p class="prose">${escapeHtml(item.concept)}</p></div></section>` : ""}
       ${item.scope || (item.materials && item.materials.length) ? `<section><div class="wrap">
         ${item.scope ? `<p class="label" style="margin-bottom:1rem;">Contribution</p><p class="prose" style="max-width:800px;">${escapeHtml(item.scope)}</p>` : ""}

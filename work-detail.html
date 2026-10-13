@@ -17,7 +17,7 @@
 
 <footer id="site-footer" class="site-footer"></footer>
 
-<script src="js/data.js"></script>
+<script src="js/data.js?v=20261013c"></script>
 <script src="js/main.js?v=20261013b"></script>
 <script>
   renderChrome("work/");
@@ -45,6 +45,7 @@
       <section style="border-top:none; padding-top:0;">
         <div class="wrap">
           <div id="hero-plate" style="cursor:pointer;">${plateHTML({ src: item.heroImage, ratio: "hero", label: item.title + " — hero image" })}</div>
+          ${item.imageCredit ? `<p class="image-credit">${escapeHtml(item.imageCredit)}</p>` : ""}
         </div>
       </section>
 
