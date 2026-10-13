@@ -20,7 +20,7 @@
 <script src="js/data.js"></script>
 <script src="js/main.js"></script>
 <script>
-  renderChrome("studio-baran.html");
+  renderChrome("studio-baran/");
   const item = STUDIO_BARAN_PROJECTS.find((p) => p.slug === getParam("slug"));
   const main = qs("#main");
 
@@ -29,7 +29,7 @@
 
     main.innerHTML = `
       <div class="wrap detail-head">
-        <a class="back" href="studio-baran.html">← All Studio Baran projects</a>
+        <a class="back" href="studio-baran/">← All Studio Baran projects</a>
         <p class="identity-flag">Studio Baran — independent practice</p>
         <h1 class="display-lg" style="margin-top:1rem;">${escapeHtml(item.title)}</h1>
         ${metaRowHTML([

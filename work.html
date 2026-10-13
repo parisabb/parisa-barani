@@ -33,9 +33,9 @@
 <script src="js/data.js"></script>
 <script src="js/main.js"></script>
 <script>
-  renderChrome("work.html");
+  renderChrome("work/");
   buildIndexList(qs("#work-list"), newestFirst(PROFESSIONAL_PROJECTS), {
-    baseHref: "work-detail.html",
+    baseHref: "work/",
     metaFn: (p) => [p.studio, p.location, p.year],
   });
 </script>

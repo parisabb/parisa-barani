@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<base href="../">
+<title>Studio Baran — Parisa Barani</title>
+<meta name="description" content="Studio Baran is Parisa Barani's independent practice — spatial design, objects, installations and material research.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header id="site-header" class="site-header"></header>
+
+<main>
+  <section style="border-top:none;">
+    <div class="wrap">
+      <h1 class="display-lg">Studio Baran</h1>
+      <p class="prose" style="margin-top: 1.5rem; max-width: 65ch;">An independent practice for artistic research and spatial proposals, alongside objects, installations and material research. Self-initiated projects developed through concept, design and production.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="thumb-grid" id="baran-grid"></div>
+    </div>
+  </section>
+</main>
+
+<footer id="site-footer" class="site-footer"></footer>
+
+<script src="js/data.js"></script>
+<script src="js/main.js"></script>
+<script>
+  renderChrome("studio-baran/");
+  const grid = qs("#baran-grid");
+  grid.innerHTML = newestFirst(STUDIO_BARAN_PROJECTS).map((p) => thumbCardHTML({
+    href: "studio-baran/?slug=" + encodeURIComponent(p.slug),
+    src: p.heroImage,
+    title: p.title,
+    meta: p.year,
+  })).join("");
+</script>
+
+<script src="js/clean-routes.js"></script>
+</body>
+</html>

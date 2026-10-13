@@ -20,7 +20,7 @@
 <script src="js/data.js"></script>
 <script src="js/main.js"></script>
 <script>
-  renderChrome("work.html");
+  renderChrome("work/");
   const item = PROFESSIONAL_PROJECTS.find((p) => p.slug === getParam("slug"));
   const main = qs("#main");
 
@@ -29,7 +29,7 @@
 
     main.innerHTML = `
       <div class="wrap detail-head">
-        <a class="back" href="work.html">← All work</a>
+        <a class="back" href="work/">← All work</a>
         <p class="identity-flag">Professional work — completed with ${escapeHtml(item.studio)}</p>
         <h1 class="display-lg" style="margin-top:1rem;">${escapeHtml(item.title)}</h1>
         ${metaRowHTML([

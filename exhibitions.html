@@ -33,7 +33,7 @@
 <script src="js/data.js"></script>
 <script src="js/main.js"></script>
 <script>
-  renderChrome("exhibitions.html");
+  renderChrome("exhibitions/");
 
   const byYear = {};
   EXHIBITIONS.forEach((e) => { (byYear[e.year] = byYear[e.year] || []).push(e); });
@@ -44,7 +44,7 @@
       <div class="year">${escapeHtml(y)}</div>
       <div class="entries">
         ${byYear[y].map((e) => `
-          <a href="exhibitions-detail.html?slug=${encodeURIComponent(e.slug)}">
+          <a href="exhibitions/?slug=${encodeURIComponent(e.slug)}">
             <p class="entry-title">${escapeHtml(e.title)}</p>
             <p class="entry-meta">${escapeHtml([e.institution, e.location].filter(Boolean).join(" — "))}</p>
           </a>

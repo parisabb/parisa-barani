@@ -35,10 +35,10 @@
 <script src="js/data.js"></script>
 <script src="js/main.js"></script>
 <script>
-  renderChrome("art.html");
+  renderChrome("art/");
   const artworksByNewest = [...ARTWORKS].sort((a, b) => Number(b.year || 0) - Number(a.year || 0));
   qs("#art-grid").innerHTML = artworksByNewest.map((a) => thumbCardHTML({
-    href: "art-detail.html?slug=" + encodeURIComponent(a.slug),
+    href: "art/?slug=" + encodeURIComponent(a.slug),
     src: a.image,
     title: a.title,
     meta: a.year,

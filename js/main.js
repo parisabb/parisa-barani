@@ -44,12 +44,12 @@ function visualFallback(label, source, compact) {
    ———————————————————————————————————————————— */
 
 const NAV_LINKS = [
-  { href: "work.html", label: "Work" },
-  { href: "studio-baran.html", label: "Studio Baran" },
-  { href: "exhibitions.html", label: "Exhibitions" },
-  { href: "art.html", label: "Art" },
-  { href: "about.html", label: "About" },
-  { href: "contact.html", label: "Contact" },
+  { href: "work/", label: "Work" },
+  { href: "studio-baran/", label: "Studio Baran" },
+  { href: "exhibitions/", label: "Exhibitions" },
+  { href: "art/", label: "Art" },
+  { href: "about/", label: "About" },
+  { href: "contact/", label: "Contact" },
 ];
 
 function renderChrome(activeHref) {
@@ -81,7 +81,7 @@ function renderChrome(activeHref) {
       <div class="wrap">
         <span>${SITE.name} — ${SITE.studio}, ${SITE.location}</span>
         <span><a href="mailto:${SITE.email}">${SITE.email}</a></span>
-        <span><a href="contact.html">Contact</a></span>
+        <span><a href="contact/">Contact</a></span>
       </div>`;
   }
 }

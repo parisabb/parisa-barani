@@ -20,7 +20,7 @@
 <script src="js/data.js"></script>
 <script src="js/main.js"></script>
 <script>
-  renderChrome("exhibitions.html");
+  renderChrome("exhibitions/");
   const item = EXHIBITIONS.find((e) => e.slug === getParam("slug"));
   const main = qs("#main");
 
@@ -30,7 +30,7 @@
 
     main.innerHTML = `
       <div class="wrap detail-head">
-        <a class="back" href="exhibitions.html">← All exhibitions</a>
+        <a class="back" href="exhibitions/">← All exhibitions</a>
         <h1 class="display-lg" style="margin-top:1rem;">${escapeHtml(item.title)}</h1>
         ${metaRowHTML([
           ["Institution", item.institution],
@@ -68,7 +68,7 @@
           <p class="label" style="margin-bottom:1.5rem;">Works shown</p>
           <div class="thumb-grid">
             ${relatedArt.map((a) => thumbCardHTML({
-              href: "art-detail.html?slug=" + encodeURIComponent(a.slug),
+              href: "art/?slug=" + encodeURIComponent(a.slug),
               src: a.image,
               title: a.title,
               meta: a.year,

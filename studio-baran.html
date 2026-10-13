@@ -34,10 +34,10 @@
 <script src="js/data.js"></script>
 <script src="js/main.js"></script>
 <script>
-  renderChrome("studio-baran.html");
+  renderChrome("studio-baran/");
   const grid = qs("#baran-grid");
   grid.innerHTML = newestFirst(STUDIO_BARAN_PROJECTS).map((p) => thumbCardHTML({
-    href: "studio-baran-detail.html?slug=" + encodeURIComponent(p.slug),
+    href: "studio-baran/?slug=" + encodeURIComponent(p.slug),
     src: p.heroImage,
     title: p.title,
     meta: p.year,
