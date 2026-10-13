@@ -13,7 +13,7 @@
   HOW TO ADD A NEW PROJECT
   ————————————————————————————————————————————————————————————————
   1. Copy one existing object inside the relevant array below.
-  2. Give it a unique `slug` (used in the URL, e.g. "work-detail.html?slug=your-slug").
+  2. Give it a unique `slug` (used in the URL, e.g. "work/your-slug/").
   3. Fill in the fields. Leave arrays empty ([]) if you have nothing yet.
   4. Save the file — no other code needs to change.
 

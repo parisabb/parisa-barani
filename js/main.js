@@ -113,7 +113,7 @@ function buildIndexList(container, items, opts) {
   container.innerHTML = `
     <div class="index-list">
       ${items.map((item) => `
-        <a class="index-row" href="${baseHref}?slug=${encodeURIComponent(item.slug)}">
+        <a class="index-row" href="${typeof baseHref === "function" ? baseHref(item) : baseHref + "?slug=" + encodeURIComponent(item.slug)}">
           <div class="thumb thumb-sm">
             ${(item.heroImage || (item.images && item.images[0])) ? `<img src="${escapeHtml(item.heroImage || (item.images && item.images[0]))}" alt="" loading="lazy"
                  onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">` : ""}

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<base href="../../">
+<title>Between Us, Only Rapture — Parisa Barani</title>
+<meta name="description" content="Between Us, Only Rapture is a permanent installation by artist Sara Sallam at Medelhavsmuseet that brings three sarcophagi into an imagined...">
+<link rel="canonical" href="https://parisabarani.se/work/between-us-only-rapture/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Parisa Barani">
+<meta property="og:title" content="Between Us, Only Rapture — Parisa Barani">
+<meta property="og:description" content="Between Us, Only Rapture is a permanent installation by artist Sara Sallam at Medelhavsmuseet that brings three sarcophagi into an imagined...">
+<meta property="og:url" content="https://parisabarani.se/work/between-us-only-rapture/">
+<meta property="og:image" content="https://parisabarani.se/images/work/Between%20us%20only%20rapture/Screenshot%202026-09-18%20121855-ivory.webp">
+<meta property="og:image:alt" content="Between Us, Only Rapture — Parisa Barani">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header id="site-header" class="site-header"></header>
+
+<main>
+  <section style="border-top:none;">
+    <div class="wrap">
+      <p class="label">Professional work</p>
+      <h1 class="display-lg" style="margin-top: 0.6rem;">Interior and spatial projects.</h1>
+      <p class="prose" style="margin-top: 1.5rem;">Selected work developed in collaboration with studios and companies. Each project identifies the studio, role and individual contribution.</p>
+    </div>
+  </section>
+
+  <section style="padding-top: 0;">
+    <div class="wrap" id="work-list"></div>
+  </section>
+</main>
+
+<footer id="site-footer" class="site-footer"></footer>
+
+<script src="js/data.js"></script>
+<script src="js/main.js?v=20261013b"></script>
+<script>
+  renderChrome("work/");
+  buildIndexList(qs("#work-list"), newestFirst(PROFESSIONAL_PROJECTS), {
+    baseHref: (p) => "work/" + encodeURIComponent(p.slug) + "/",
+    metaFn: (p) => [p.studio, p.location, p.year],
+  });
+</script>
+
+<script src="js/clean-routes.js?v=20261013b"></script>
+</body>
+</html>

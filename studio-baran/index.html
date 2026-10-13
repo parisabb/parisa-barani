@@ -5,7 +5,16 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <base href="../">
 <title>Studio Baran — Parisa Barani</title>
-<meta name="description" content="Studio Baran is Parisa Barani's independent practice — spatial design, objects, installations and material research.">
+<meta name="description" content="Independent spatial design, objects, installations and research by Parisa Barani.">
+<link rel="canonical" href="https://parisabarani.se/studio-baran/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Parisa Barani">
+<meta property="og:title" content="Studio Baran — Parisa Barani">
+<meta property="og:description" content="Independent spatial design, objects, installations and research by Parisa Barani.">
+<meta property="og:url" content="https://parisabarani.se/studio-baran/">
+<meta property="og:image" content="https://parisabarani.se/images/hero-public-bench-city.webp">
+<meta property="og:image:alt" content="Public Bench — a spatial design proposal by Parisa Barani">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -33,18 +42,18 @@
 <footer id="site-footer" class="site-footer"></footer>
 
 <script src="js/data.js"></script>
-<script src="js/main.js?v=20261013"></script>
+<script src="js/main.js?v=20261013b"></script>
 <script>
   renderChrome("studio-baran/");
   const grid = qs("#baran-grid");
   grid.innerHTML = newestFirst(STUDIO_BARAN_PROJECTS).map((p) => thumbCardHTML({
-    href: "studio-baran/?slug=" + encodeURIComponent(p.slug),
+    href: "studio-baran/" + encodeURIComponent(p.slug) + "/",
     src: p.heroImage,
     title: p.title,
     meta: p.year,
   })).join("");
 </script>
 
-<script src="js/clean-routes.js"></script>
+<script src="js/clean-routes.js?v=20261013b"></script>
 </body>
 </html>

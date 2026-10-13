@@ -18,7 +18,7 @@
 <footer id="site-footer" class="site-footer"></footer>
 
 <script src="js/data.js"></script>
-<script src="js/main.js?v=20261013"></script>
+<script src="js/main.js?v=20261013b"></script>
 <script>
   renderChrome("exhibitions/");
   const item = EXHIBITIONS.find((e) => e.slug === getParam("slug"));
@@ -68,7 +68,7 @@
           <p class="label" style="margin-bottom:1.5rem;">Works shown</p>
           <div class="thumb-grid">
             ${relatedArt.map((a) => thumbCardHTML({
-              href: "art/?slug=" + encodeURIComponent(a.slug),
+              href: "art/" + encodeURIComponent(a.slug) + "/",
               src: a.image,
               title: a.title,
               meta: a.year,

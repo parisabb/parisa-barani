@@ -4,7 +4,19 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Parisa Barani — Interior design, spatial practice and art</title>
-<meta name="description" content="Parisa Barani is an interior and spatial designer working professionally between studios and independently as Studio Baran, across interiors, exhibitions and art.">
+<meta name="description" content="Parisa Barani is a Stockholm-based interior architect and spatial designer working across interiors, exhibitions, public space and artistic research.">
+<link rel="canonical" href="https://parisabarani.se/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Parisa Barani">
+<meta property="og:title" content="Parisa Barani — Interior Architect / Spatial Designer">
+<meta property="og:description" content="Interior architecture, spatial design, exhibitions and artistic research by Parisa Barani.">
+<meta property="og:url" content="https://parisabarani.se/">
+<meta property="og:image" content="https://parisabarani.se/images/hero-public-bench-city.webp">
+<meta property="og:image:alt" content="Public Bench — a spatial design proposal by Parisa Barani">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Parisa Barani — Interior Architect / Spatial Designer">
+<meta name="twitter:description" content="Interior architecture, spatial design, exhibitions and artistic research by Parisa Barani.">
+<meta name="twitter:image" content="https://parisabarani.se/images/hero-public-bench-city.webp">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -86,7 +98,7 @@
 <footer id="site-footer" class="site-footer"></footer>
 
 <script src="js/data.js"></script>
-<script src="js/main.js?v=20261013"></script>
+<script src="js/main.js?v=20261013b"></script>
 <script>
   renderChrome("index.html");
 
@@ -115,7 +127,7 @@
 
   function gridCell(container, item, href, status = "") {
     container.insertAdjacentHTML("beforeend", thumbCardHTML({
-      href: href + "?slug=" + encodeURIComponent(item.slug),
+      href: href + encodeURIComponent(item.slug) + "/",
       src: item.heroImage || item.image,
       title: item.title,
       meta: item.year,

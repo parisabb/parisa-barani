@@ -4,7 +4,16 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Exhibitions — Parisa Barani</title>
-<meta name="description" content="Exhibitions Parisa Barani has designed, curated or shown work in.">
+<meta name="description" content="A selection of exhibitions, installations and artistic projects by Parisa Barani.">
+<link rel="canonical" href="https://parisabarani.se/exhibitions/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Parisa Barani">
+<meta property="og:title" content="Exhibitions — Parisa Barani">
+<meta property="og:description" content="A selection of exhibitions, installations and artistic projects by Parisa Barani.">
+<meta property="og:url" content="https://parisabarani.se/exhibitions/">
+<meta property="og:image" content="https://parisabarani.se/images/hero-public-bench-city.webp">
+<meta property="og:image:alt" content="Public Bench — a spatial design proposal by Parisa Barani">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -31,7 +40,7 @@
 <footer id="site-footer" class="site-footer"></footer>
 
 <script src="js/data.js"></script>
-<script src="js/main.js?v=20261013"></script>
+<script src="js/main.js?v=20261013b"></script>
 <script>
   renderChrome("exhibitions/");
 
@@ -44,7 +53,7 @@
       <div class="year">${escapeHtml(y)}</div>
       <div class="entries">
         ${byYear[y].map((e) => `
-          <a href="exhibitions/?slug=${encodeURIComponent(e.slug)}">
+          <a href="exhibitions/${encodeURIComponent(e.slug)}/">
             <p class="entry-title">${escapeHtml(e.title)}</p>
             <p class="entry-meta">${escapeHtml([e.institution, e.location].filter(Boolean).join(" — "))}</p>
           </a>

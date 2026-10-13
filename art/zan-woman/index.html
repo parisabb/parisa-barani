@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<base href="../../">
+<title>Zan (Woman) — Parisa Barani</title>
+<meta name="description" content="Selected work by Parisa Barani.">
+<link rel="canonical" href="https://parisabarani.se/art/zan-woman/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Parisa Barani">
+<meta property="og:title" content="Zan (Woman) — Parisa Barani">
+<meta property="og:description" content="Selected work by Parisa Barani.">
+<meta property="og:url" content="https://parisabarani.se/art/zan-woman/">
+<meta property="og:image" content="https://parisabarani.se/images/art/zan-woman.webp">
+<meta property="og:image:alt" content="Zan (Woman) — Parisa Barani">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header id="site-header" class="site-header"></header>
+
+<main>
+  <section style="border-top:none;">
+    <div class="wrap">
+      <p class="label">Art</p>
+      <h1 class="display-lg" style="margin-top: 0.6rem;">Painting and sculpture.</h1>
+      <p class="prose" style="margin-top: 1.5rem; max-width: 65ch;">Blurring the boundaries between reality and imagination, each work invites reflection, curiosity and personal connection.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="thumb-grid" id="art-grid"></div>
+    </div>
+  </section>
+</main>
+
+<footer id="site-footer" class="site-footer"></footer>
+
+<script src="js/data.js"></script>
+<script src="js/main.js?v=20261013b"></script>
+<script>
+  renderChrome("art/");
+  const artworksByNewest = [...ARTWORKS].sort((a, b) => Number(b.year || 0) - Number(a.year || 0));
+  qs("#art-grid").innerHTML = artworksByNewest.map((a) => thumbCardHTML({
+    href: "art/" + encodeURIComponent(a.slug) + "/",
+    src: a.image,
+    title: a.title,
+    meta: a.year,
+    status: a.availability || "sold",
+  })).join("");
+</script>
+
+<script src="js/clean-routes.js?v=20261013b"></script>
+</body>
+</html>

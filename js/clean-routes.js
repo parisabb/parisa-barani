@@ -1,9 +1,10 @@
 /* Detail views shown at clean, folder-style portfolio URLs.
-   Example: /work/?slug=deep-sense */
+   Example: /work/deep-sense/ */
 
 (function renderCleanDetailRoute() {
-  const route = window.location.pathname.split("/").filter(Boolean)[0];
-  const slug = getParam("slug");
+  const pathParts = window.location.pathname.split("/").filter(Boolean);
+  const route = pathParts[0];
+  const slug = pathParts[1] || getParam("slug");
   if (!slug || !["work", "studio-baran", "art", "exhibitions"].includes(route)) return;
 
   const main = qs("main");
@@ -98,7 +99,7 @@
     ${item.images.length ? `<section style="border-top:none; padding-top:0;"><div class="wrap"><div id="hero-plate" style="cursor:pointer;">${plateHTML({ src: item.images[0], ratio: "hero", label: item.title + " — installation view" })}</div></div></section>` : ""}
     <section><div class="wrap" style="max-width:800px;"><p class="label" style="margin-bottom:1rem;">About the exhibition</p><p class="prose">${escapeHtml(item.description)}</p></div></section>
     ${item.images.length > 1 ? `<section><div class="wrap"><p class="label" style="margin-bottom:1.5rem;">Installation views</p><div class="thumb-grid" id="views-grid"></div></div></section>` : ""}
-    ${relatedArt.length ? `<section><div class="wrap"><p class="label" style="margin-bottom:1.5rem;">Works shown</p><div class="thumb-grid">${relatedArt.map((artwork) => thumbCardHTML({ href: "art/?slug=" + encodeURIComponent(artwork.slug), src: artwork.image, title: artwork.title, meta: artwork.year })).join("")}</div></div></section>` : ""}`;
+    ${relatedArt.length ? `<section><div class="wrap"><p class="label" style="margin-bottom:1.5rem;">Works shown</p><div class="thumb-grid">${relatedArt.map((artwork) => thumbCardHTML({ href: "art/" + encodeURIComponent(artwork.slug) + "/", src: artwork.image, title: artwork.title, meta: artwork.year })).join("")}</div></div></section>` : ""}`;
   if (item.images.length) qs("#hero-plate").addEventListener("click", () => Lightbox.open(item.images.map((src, index) => ({ src, title: item.title, meta: index === 0 ? "Installation view" : "Installation view " + (index + 1) })), 0));
   if (item.images.length > 1) buildLightboxGrid(qs("#views-grid"), item.images.slice(1), (index) => item.title + " — installation view " + (index + 2));
 }());

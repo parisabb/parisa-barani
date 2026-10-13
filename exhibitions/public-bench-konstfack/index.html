@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<base href="../../">
+<title>Public Bench — Parisa Barani</title>
+<meta name="description" content="Exhibited at Konstfack, PUBLIC BENCH explored public seating as a social tool. Its adjustable dividers and angled segments invited visitors to...">
+<link rel="canonical" href="https://parisabarani.se/exhibitions/public-bench-konstfack/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Parisa Barani">
+<meta property="og:title" content="Public Bench — Parisa Barani">
+<meta property="og:description" content="Exhibited at Konstfack, PUBLIC BENCH explored public seating as a social tool. Its adjustable dividers and angled segments invited visitors to...">
+<meta property="og:url" content="https://parisabarani.se/exhibitions/public-bench-konstfack/">
+<meta property="og:image" content="https://parisabarani.se/images/hero-public-bench-city.webp">
+<meta property="og:image:alt" content="Public Bench — Parisa Barani">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header id="site-header" class="site-header"></header>
+
+<main>
+  <section style="border-top:none;">
+    <div class="wrap">
+      <p class="label">Exhibitions</p>
+      <h1 class="display-lg" style="margin-top: 0.6rem;">Exhibitions</h1>
+      <p class="prose" style="margin-top: 1.5rem; max-width: 65ch;">A selection of spatial projects, installations and artworks presented in public.</p>
+    </div>
+  </section>
+
+  <section style="padding-top: 0;">
+    <div class="wrap" id="exhibitions-list"></div>
+  </section>
+</main>
+
+<footer id="site-footer" class="site-footer"></footer>
+
+<script src="js/data.js"></script>
+<script src="js/main.js?v=20261013b"></script>
+<script>
+  renderChrome("exhibitions/");
+
+  const byYear = {};
+  EXHIBITIONS.forEach((e) => { (byYear[e.year] = byYear[e.year] || []).push(e); });
+  const years = Object.keys(byYear).sort((a, b) => b - a);
+
+  qs("#exhibitions-list").innerHTML = years.map((y) => `
+    <div class="year-group">
+      <div class="year">${escapeHtml(y)}</div>
+      <div class="entries">
+        ${byYear[y].map((e) => `
+          <a href="exhibitions/${encodeURIComponent(e.slug)}/">
+            <p class="entry-title">${escapeHtml(e.title)}</p>
+            <p class="entry-meta">${escapeHtml([e.institution, e.location].filter(Boolean).join(" — "))}</p>
+          </a>
+        `).join("")}
+      </div>
+    </div>
+  `).join("");
+</script>
+
+<script src="js/clean-routes.js?v=20261013b"></script>
+</body>
+</html>
