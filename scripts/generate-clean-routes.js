@@ -27,7 +27,7 @@ const sections = [
 ];
 
 const viewport = '<meta name="viewport" content="width=device-width, initial-scale=1.0">';
-const cleanRouteScript = '<script src="js/clean-routes.js?v=20261013c"></script>\r\n';
+const cleanRouteScript = '<script src="js/clean-routes.js?v=20261014b"></script>\r\n';
 
 function escapeAttribute(value) {
   return String(value || "")

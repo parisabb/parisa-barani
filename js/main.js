@@ -236,14 +236,21 @@ const Lightbox = (function () {
 /* Renders a square thumbnail grid whose items open the lightbox
    (rather than linking elsewhere) — used for galleries within a
    single project, exhibition or artwork page. */
-function buildLightboxGrid(container, images, labelFn) {
-  const items = images.map((src, i) => ({ src, title: labelFn ? labelFn(i) : "" }));
+function buildLightboxGrid(container, images, labelFn, captionFn) {
+  const items = images.map((src, i) => ({
+    src,
+    title: labelFn ? labelFn(i) : "",
+    meta: captionFn ? captionFn(i) : ""
+  }));
   container.innerHTML = images.map((src, i) => `
-    <div class="thumb" data-index="${i}" tabindex="0" role="button" aria-label="View image ${i + 1} of ${images.length}">
-      <img src="${escapeHtml(src)}" alt="${escapeHtml(labelFn ? labelFn(i) : "")}" loading="lazy"
-           onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-      ${visualFallback(labelFn ? labelFn(i) : "Image placeholder", src)}
-    </div>
+    ${captionFn ? `<div class="gallery-item">` : ""}
+      <div class="thumb" data-index="${i}" tabindex="0" role="button" aria-label="View image ${i + 1} of ${images.length}">
+        <img src="${escapeHtml(src)}" alt="${escapeHtml(labelFn ? labelFn(i) : "")}" loading="lazy"
+             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+        ${visualFallback(labelFn ? labelFn(i) : "Image placeholder", src)}
+      </div>
+      ${captionFn ? `<p class="gallery-caption">${escapeHtml(captionFn(i))}</p>` : ""}
+    ${captionFn ? `</div>` : ""}
   `).join("");
 
   qsa(".thumb", container).forEach((el) => {

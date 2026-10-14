@@ -658,6 +658,14 @@ section + section { border-top: 1px solid var(--hairline); }
 
 .thumb-caption { display: none; }
 
+.gallery-item { min-width: 0; }
+.gallery-caption {
+  margin: 0.5rem 0 0;
+  color: var(--stone);
+  font-size: 0.68rem;
+  line-height: 1.35;
+}
+
 .thumb-card { display: block; }
 .thumb-card-copy {
   display: flex;

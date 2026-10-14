@@ -40,7 +40,14 @@
       ${item.images && item.images.length ? `<section><div class="wrap"><p class="label" style="margin-bottom:1.5rem;">Gallery</p><div class="thumb-grid" id="gallery-grid"></div></div></section>` : ""}`;
     qs("#hero-plate").addEventListener("click", () => Lightbox.open([{ src: item.heroImage, title: item.title, meta: item.location + " — " + item.year }], 0));
     if (item.drawings && item.drawings.length) buildLightboxGrid(qs("#drawings-grid"), item.drawings, () => "Drawing / plan — " + item.title);
-    if (item.images && item.images.length) buildLightboxGrid(qs("#gallery-grid"), item.images, (index) => item.title + " — view " + (index + 1));
+    if (item.images && item.images.length) {
+      buildLightboxGrid(
+        qs("#gallery-grid"),
+        item.images,
+        (index) => item.title + " — view " + (index + 1),
+        item.imageCaption ? () => item.imageCaption : null
+      );
+    }
     return;
   }
 

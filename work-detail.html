@@ -17,8 +17,8 @@
 
 <footer id="site-footer" class="site-footer"></footer>
 
-<script src="js/data.js?v=20261014"></script>
-<script src="js/main.js?v=20261013b"></script>
+<script src="js/data.js?v=20261014b"></script>
+<script src="js/main.js?v=20261014b"></script>
 <script>
   renderChrome("work/");
   const item = PROFESSIONAL_PROJECTS.find((p) => p.slug === getParam("slug"));
@@ -97,7 +97,12 @@
     }
 
     if (item.images && item.images.length) {
-      buildLightboxGrid(qs("#gallery-grid"), item.images, (i) => item.title + " — view " + (i + 1));
+      buildLightboxGrid(
+        qs("#gallery-grid"),
+        item.images,
+        (i) => item.title + " — view " + (i + 1),
+        item.imageCaption ? () => item.imageCaption : null
+      );
     }
   }
 </script>
