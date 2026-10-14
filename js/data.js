@@ -180,7 +180,7 @@ const STUDIO_BARAN_PROJECTS = [
       "images/studio-baran/Interlace/Interlace 00.webp",
       "images/studio-baran/Interlace/Interlace 2.webp",
       "images/studio-baran/Interlace/Interlace 04.webp",
-      "images/studio-baran/Interlace/Interlace 05.webp",
+      "images/studio-baran/Interlace/Interlace 05-enhanced.png",
       "images/studio-baran/Interlace/Interlace 06.webp",
     ],
     processImages: ["images/studio-baran/Interlace/Interlace3.webp"],
