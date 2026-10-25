@@ -37,7 +37,10 @@
         ${item.materials && item.materials.length ? `<div style="margin-top:2rem; display:flex; gap:2rem; flex-wrap:wrap;">${item.materials.map((material) => `<span class="meta" style="font-size:0.85rem; color:var(--stone); border-bottom:1px solid var(--hairline-strong); padding-bottom:2px;">${escapeHtml(material)}</span>`).join("")}</div>` : ""}
       </div></section>` : ""}
       ${item.drawings && item.drawings.length ? `<section><div class="wrap"><p class="label" style="margin-bottom:1.5rem;">Drawings &amp; plans</p><div class="thumb-grid" id="drawings-grid"></div></div></section>` : ""}
-      ${item.images && item.images.length ? `<section><div class="wrap"><p class="label" style="margin-bottom:1.5rem;">Gallery</p><div class="thumb-grid" id="gallery-grid"></div></div></section>` : ""}`;
+      ${item.images && item.images.length ? (item.slug === "deep-sense"
+        ? `<section class="image-disclosure-section"><div class="wrap"><details class="image-disclosure"><summary><span>Project images</span><span class="image-disclosure-count">${item.images.length}</span></summary><div class="thumb-grid" id="gallery-grid"></div></details></div></section>`
+        : `<section><div class="wrap"><p class="label" style="margin-bottom:1.5rem;">Gallery</p><div class="thumb-grid" id="gallery-grid"></div></div></section>`)
+        : ""}`;
     qs("#hero-plate").addEventListener("click", () => Lightbox.open([{ src: item.heroImage, title: item.title, meta: item.location + " — " + item.year }], 0));
     if (item.drawings && item.drawings.length) buildLightboxGrid(qs("#drawings-grid"), item.drawings, () => "Drawing / plan — " + item.title);
     if (item.images && item.images.length) {

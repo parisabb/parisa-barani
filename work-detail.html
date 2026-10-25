@@ -7,7 +7,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/style.css?v=20261025a">
 </head>
 <body>
 
@@ -79,13 +79,21 @@
         </div>
       </section>` : ""}
 
-      ${item.images && item.images.length ? `
+      ${item.images && item.images.length ? (item.slug === "deep-sense" ? `
+      <section class="image-disclosure-section">
+        <div class="wrap">
+          <details class="image-disclosure">
+            <summary><span>Project images</span><span class="image-disclosure-count">${item.images.length}</span></summary>
+            <div class="thumb-grid" id="gallery-grid"></div>
+          </details>
+        </div>
+      </section>` : `
       <section>
         <div class="wrap">
           <p class="label" style="margin-bottom:1.5rem;">Gallery</p>
           <div class="thumb-grid" id="gallery-grid"></div>
         </div>
-      </section>` : ""}
+      </section>`) : ""}
     `;
 
     qs("#hero-plate").addEventListener("click", () => {

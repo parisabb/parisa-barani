@@ -835,6 +835,42 @@ section + section { border-top: 1px solid var(--hairline); }
   gap: clamp(1rem, 2.5vw, 2rem);
 }
 
+/* An intentionally quiet image reveal for selected case studies. */
+.image-disclosure-section { padding-top: clamp(2rem, 4vw, 3.5rem); }
+.image-disclosure {
+  border-top: 1px solid var(--hairline-strong);
+  border-bottom: 1px solid var(--hairline);
+}
+.image-disclosure summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.9rem 0;
+  cursor: pointer;
+  list-style: none;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.image-disclosure summary::-webkit-details-marker { display: none; }
+.image-disclosure summary::after {
+  content: "+";
+  margin-left: auto;
+  color: var(--green);
+  font-size: 1.15rem;
+  font-weight: 400;
+  line-height: 1;
+}
+.image-disclosure[open] summary::after { content: "−"; }
+.image-disclosure-count {
+  color: var(--stone);
+  font-size: 0.72rem;
+  font-weight: 500;
+}
+.image-disclosure .thumb-grid { padding: 0 0 1.25rem; }
+
 @media (max-width: 800px) {
   .gallery-sequence .pair { grid-template-columns: 1fr; }
 }
